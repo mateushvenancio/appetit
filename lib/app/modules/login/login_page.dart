@@ -76,7 +76,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                               'Entrar',
                               onPressed: controller.isLoginValid
                                   ? () {
-                                      // TODO mudar pagina
+                                      Modular.to.pushReplacementNamed(
+                                        '/listagem_pedidos',
+                                      );
                                     }
                                   : null,
                             );
