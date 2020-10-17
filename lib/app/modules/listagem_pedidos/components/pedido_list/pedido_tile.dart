@@ -9,7 +9,32 @@ class PedidoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(pedido?.items ?? 'Items'),
+      leading: CircleAvatar(
+        backgroundImage: NetworkImage(pedido.cliente.foto),
+      ),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            pedido?.items ?? 'Items',
+            style: TextStyle(fontWeight: FontWeight.bold),
+            overflow: TextOverflow.ellipsis,
+          ),
+          Text(
+            'R\$ ' +
+                (pedido?.total ?? 0).toStringAsFixed(2).replaceAll('.', ','),
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
+      subtitle: Text(
+        pedido?.items ?? '',
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 15,
+        ),
+        overflow: TextOverflow.ellipsis,
+      ),
     );
   }
 }
