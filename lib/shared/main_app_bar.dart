@@ -1,5 +1,6 @@
 import 'package:appetit/constants/constant_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -29,7 +30,12 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
                 children: [
                   Navigator.canPop(context)
                       ? IconButton(
-                          icon: Icon(Icons.chevron_left),
+                          alignment: Alignment.centerLeft,
+                          padding: EdgeInsets.zero,
+                          icon: Icon(
+                            FontAwesomeIcons.chevronLeft,
+                            color: ConstantColors.primaryColor,
+                          ),
                           onPressed: () {
                             Navigator.pop(context);
                           },
