@@ -21,11 +21,26 @@ class ListaDias extends StatelessWidget {
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
           children: [
-            Text(
-              'Em ${_dia.dia} você vendeu R\$ ${_dia.total.toStringAsFixed(2)}',
-              style: TextStyle(fontSize: 21),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+                vertical: 2,
+              ),
+              child: Text(
+                'Em ${_dia.dia} você vendeu R\$ ${_dia.total.toStringAsFixed(2).replaceAll('.', ',')}',
+                style: TextStyle(fontSize: 21),
+              ),
             ),
-            ..._dia.pedidos.map((e) => PedidoTile(e)).toList(),
+            // ..._dia.pedidos.map((e) => PedidoTile(e)).toList(),
+            ListView.separated(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return PedidoTile(_dia.pedidos[index]);
+              },
+              separatorBuilder: (_, __) => Divider(),
+              itemCount: _dia.pedidos.length,
+            )
           ],
         );
       },
