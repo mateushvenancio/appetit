@@ -1,10 +1,10 @@
 import 'package:appetit/constants/constant_colors.dart';
 import 'package:flutter/material.dart';
 
-class ListagemPedidosSearchField extends StatelessWidget {
+class SearchField extends StatelessWidget {
   final Function(String) onChanged;
 
-  ListagemPedidosSearchField({
+  SearchField({
     this.onChanged,
   });
 
