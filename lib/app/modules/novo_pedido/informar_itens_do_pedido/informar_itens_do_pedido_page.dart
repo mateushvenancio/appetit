@@ -1,8 +1,7 @@
 import 'package:appetit/app/modules/novo_pedido/components/main_slider.dart';
 import 'package:appetit/app/modules/novo_pedido/components/produto_tile.dart';
 import 'package:appetit/constants/constant_colors.dart';
-import 'package:appetit/models/categoria_model.dart';
-import 'package:appetit/models/produto_model.dart';
+import 'package:appetit/repositories/categoria_repository.dart';
 import 'package:appetit/shared/main_app_bar.dart';
 import 'package:appetit/shared/search_field.dart';
 import 'package:flutter/material.dart';
@@ -51,62 +50,8 @@ class _InformarItensDoPedidoPageState extends ModularState<
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               children: [
-                ...[
-                  CategoriaModel(
-                    nome: 'Cuscuz',
-                    produtos: [
-                      ProdutoModel(
-                        nome: 'Cuscuz simples',
-                        descricao: 'milho ou arroz',
-                        preco: 2.25,
-                        foto:
-                            'https://www.culinariapravaler.com/image/postagens/2020/01/cuscuz-nordestino-delicioso-e-muito-facil.html.jpg',
-                      ),
-                      ProdutoModel(
-                        nome: 'Cuscuz completo',
-                        descricao: 'milho ou arroz',
-                        preco: 3.25,
-                        foto:
-                            'https://www.culinariapravaler.com/image/postagens/2020/01/cuscuz-nordestino-delicioso-e-muito-facil.html.jpg',
-                      ),
-                    ],
-                  ),
-                  CategoriaModel(
-                    nome: 'Pães',
-                    produtos: [
-                      ProdutoModel(
-                        nome: 'Pão caseiro',
-                        preco: 2.25,
-                        foto:
-                            'https://www.ellafm.com.br/ella/wp-content/uploads/2020/04/P%C3%A3o-Caseiro-Simples-e-R%C3%A1pido.jpg',
-                      ),
-                      ProdutoModel(
-                        nome: 'Pão caseiro completo',
-                        preco: 3.25,
-                        foto:
-                            'https://www.ellafm.com.br/ella/wp-content/uploads/2020/04/P%C3%A3o-Caseiro-Simples-e-R%C3%A1pido.jpg',
-                      ),
-                      ProdutoModel(
-                        nome: 'Misto quente',
-                        preco: 3,
-                        foto:
-                            'https://www.ellafm.com.br/ella/wp-content/uploads/2020/04/P%C3%A3o-Caseiro-Simples-e-R%C3%A1pido.jpg',
-                      ),
-                      ProdutoModel(
-                        nome: 'Lingua de sogra (pq.)',
-                        preco: 2,
-                        foto:
-                            'https://www.ellafm.com.br/ella/wp-content/uploads/2020/04/P%C3%A3o-Caseiro-Simples-e-R%C3%A1pido.jpg',
-                      ),
-                      ProdutoModel(
-                        nome: 'Lingua de sogra (gr.)',
-                        preco: 3,
-                        foto:
-                            'https://www.ellafm.com.br/ella/wp-content/uploads/2020/04/P%C3%A3o-Caseiro-Simples-e-R%C3%A1pido.jpg',
-                      ),
-                    ],
-                  ),
-                ]
+                ...CategoriaRepository()
+                    .getAll()
                     .map((e) => ListView(
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
@@ -129,12 +74,15 @@ class _InformarItensDoPedidoPageState extends ModularState<
                                   horizontal: 15,
                                   vertical: 5,
                                 ),
-                                child: ProdutoTile(e),
+                                child: ProdutoTile(e, onTap: () {
+                                  Modular.to.pushNamed(
+                                    '/itens_pedidos',
+                                    arguments: e,
+                                  );
+                                }),
                               );
                             }).toList(),
-                            Divider(
-                              height: 28,
-                            ),
+                            Divider(height: 28),
                           ],
                         ))
                     .toList(),
