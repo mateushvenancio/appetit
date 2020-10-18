@@ -1,5 +1,6 @@
 import 'package:appetit/app/modules/listagem_pedidos/listagem_pedidos_module.dart';
 import 'package:appetit/app/modules/login/login_module.dart';
+import 'package:appetit/app/modules/novo_pedido/detalhes_do_pedido/detalhes_do_pedido_module.dart';
 import 'package:appetit/app/modules/novo_pedido/informar_itens_do_pedido/informar_itens_do_pedido_module.dart';
 import 'app_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -17,6 +18,7 @@ class AppModule extends MainModule {
         ModularRouter(Modular.initialRoute, module: LoginModule()),
         ModularRouter('/listagem_pedidos', module: ListagemPedidosModule()),
         ModularRouter('/novo_pedido', module: InformarItensDoPedidoModule()),
+        ModularRouter('/itens_pedidos', module: DetalhesDoPedidoModule()),
       ];
 
   @override
