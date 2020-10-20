@@ -3,6 +3,7 @@ import 'package:appetit/constants/constant_colors.dart';
 import 'package:appetit/models/produto_model.dart';
 import 'package:appetit/shared/main_app_bar.dart';
 import 'package:appetit/shared/main_bottom_bar.dart';
+import 'package:appetit/shared/main_chip_text.dart';
 import 'package:appetit/shared/main_radio_tile.dart';
 import 'package:appetit/shared/main_text_field.dart';
 import 'package:flutter/material.dart';
@@ -60,15 +61,8 @@ class _DetalhesDoPedidoPageState
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(15),
-              child: Text(
-                'Caso queira, aproveite para adicionar \nalguma observação para este pedido.',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: ConstantColors.lightDark,
-                ),
-              ),
+            MainChipText(
+              'Caso queira, aproveite para adicionar \nalguma observação para este pedido.',
             ),
             Padding(
               padding: const EdgeInsets.all(15),
