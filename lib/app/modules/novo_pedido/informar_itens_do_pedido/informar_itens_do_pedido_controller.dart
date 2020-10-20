@@ -1,4 +1,5 @@
 import 'package:appetit/models/produto_model.dart';
+import 'package:appetit/repositories/categoria_repository.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -9,6 +10,8 @@ class InformarItensDoPedidoController = _InformarItensDoPedidoControllerBase
     with _$InformarItensDoPedidoController;
 
 abstract class _InformarItensDoPedidoControllerBase with Store {
+  final categoriaRepository = Modular.get<CategoriaRepository>();
+
   @observable
   ObservableList<ProdutoModel> selecionados = <ProdutoModel>[].asObservable();
 

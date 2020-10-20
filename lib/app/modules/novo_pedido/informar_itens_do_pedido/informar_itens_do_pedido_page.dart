@@ -6,6 +6,7 @@ import 'package:appetit/repositories/categoria_repository.dart';
 import 'package:appetit/shared/continue_bottom_bar.dart';
 import 'package:appetit/shared/main_app_bar.dart';
 import 'package:appetit/shared/main_bottom_bar.dart';
+import 'package:appetit/shared/main_chip_text.dart';
 import 'package:appetit/shared/search_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -20,8 +21,6 @@ class InformarItensDoPedidoPage extends StatefulWidget {
 
 class _InformarItensDoPedidoPageState extends ModularState<
     InformarItensDoPedidoPage, InformarItensDoPedidoController> {
-  static const _padding = const EdgeInsets.all(15);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,15 +30,8 @@ class _InformarItensDoPedidoPageState extends ModularState<
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Padding(
-              padding: _padding,
-              child: Text(
-                'Preencha as informações abaixo para concluir o pedido.',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: ConstantColors.lightDark,
-                ),
-              ),
+            MainChipText(
+              'Preencha as informações abaixo para concluir o pedido.',
             ),
             MainSlider(
               title: 'O que você está vendendo?',
@@ -56,7 +48,7 @@ class _InformarItensDoPedidoPageState extends ModularState<
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 children: [
-                  ...CategoriaRepository()
+                  ...controller.categoriaRepository
                       .getAll()
                       .map((e) => ListView(
                             shrinkWrap: true,
@@ -110,6 +102,9 @@ class _InformarItensDoPedidoPageState extends ModularState<
         int _length = controller.selecionados.length;
         return ContinueBottomBar(
           active: _length > 0,
+          onTap: () {
+            Modular.to.pushNamed('/selecionar_cliente');
+          },
           label:
               'Total: R\$ ${controller.somaTotal.toStringAsFixed(2).replaceAll('.', ',')}',
         );
