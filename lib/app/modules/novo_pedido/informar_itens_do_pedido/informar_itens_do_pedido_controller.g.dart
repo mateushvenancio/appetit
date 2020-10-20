@@ -20,18 +20,19 @@ final $InformarItensDoPedidoController = BindInject(
 
 mixin _$InformarItensDoPedidoController
     on _InformarItensDoPedidoControllerBase, Store {
-  final _$valueAtom = Atom(name: '_InformarItensDoPedidoControllerBase.value');
+  final _$selecionadosAtom =
+      Atom(name: '_InformarItensDoPedidoControllerBase.selecionados');
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  ObservableList<ProdutoModel> get selecionados {
+    _$selecionadosAtom.reportRead();
+    return super.selecionados;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set selecionados(ObservableList<ProdutoModel> value) {
+    _$selecionadosAtom.reportWrite(value, super.selecionados, () {
+      super.selecionados = value;
     });
   }
 
@@ -39,11 +40,23 @@ mixin _$InformarItensDoPedidoController
       ActionController(name: '_InformarItensDoPedidoControllerBase');
 
   @override
-  void increment() {
+  dynamic addItem(ProdutoModel value) {
     final _$actionInfo = _$_InformarItensDoPedidoControllerBaseActionController
-        .startAction(name: '_InformarItensDoPedidoControllerBase.increment');
+        .startAction(name: '_InformarItensDoPedidoControllerBase.addItem');
     try {
-      return super.increment();
+      return super.addItem(value);
+    } finally {
+      _$_InformarItensDoPedidoControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  bool itemExiste(ProdutoModel value) {
+    final _$actionInfo = _$_InformarItensDoPedidoControllerBaseActionController
+        .startAction(name: '_InformarItensDoPedidoControllerBase.itemExiste');
+    try {
+      return super.itemExiste(value);
     } finally {
       _$_InformarItensDoPedidoControllerBaseActionController
           .endAction(_$actionInfo);
@@ -53,7 +66,7 @@ mixin _$InformarItensDoPedidoController
   @override
   String toString() {
     return '''
-value: ${value}
+selecionados: ${selecionados}
     ''';
   }
 }

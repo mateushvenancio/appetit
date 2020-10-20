@@ -1,21 +1,21 @@
 import 'package:appetit/constants/constant_colors.dart';
 import 'package:appetit/models/produto_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 class ProdutoTile extends StatelessWidget {
   final ProdutoModel produto;
   final Function onTap;
+  final bool active;
 
-  ProdutoTile(this.produto, {this.onTap});
+  ProdutoTile(this.produto, {this.onTap, this.active = false});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      // padding: const EdgeInsets.symmetric(horizontal: 10),
       height: 70,
       width: double.infinity,
       child: Material(
+        color: active ? ConstantColors.primaryColor : Colors.white,
         elevation: 2,
         borderRadius: BorderRadius.circular(5),
         child: InkWell(
@@ -44,13 +44,16 @@ class ProdutoTile extends StatelessWidget {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
+                          color: active ? Colors.white : Colors.black,
                         ),
                       ),
                       if (produto.descricao != null)
                         Text(
                           produto.descricao,
                           style: TextStyle(
-                            color: ConstantColors.lightDark,
+                            color: active
+                                ? Colors.white
+                                : ConstantColors.lightDark,
                             fontSize: 16,
                           ),
                         ),
@@ -63,6 +66,7 @@ class ProdutoTile extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
+                    color: active ? Colors.white : Colors.black,
                   ),
                 ),
               ],

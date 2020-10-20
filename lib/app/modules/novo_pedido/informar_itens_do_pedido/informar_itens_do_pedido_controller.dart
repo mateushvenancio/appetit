@@ -1,3 +1,4 @@
+import 'package:appetit/models/produto_model.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -9,10 +10,29 @@ class InformarItensDoPedidoController = _InformarItensDoPedidoControllerBase
 
 abstract class _InformarItensDoPedidoControllerBase with Store {
   @observable
-  int value = 0;
+  ObservableList<ProdutoModel> selecionados = <ProdutoModel>[].asObservable();
 
   @action
-  void increment() {
-    value++;
+  addItem(ProdutoModel value) => selecionados.add(value);
+
+  @action
+  bool itemExiste(ProdutoModel value) {
+    return selecionados.firstWhere(
+          (_e) => _e.nome == value.nome,
+          orElse: () => null,
+        ) !=
+        null;
+  }
+
+  double get somaTotal {
+    double _total = 0;
+
+    if (selecionados.length <= 0) return _total;
+
+    selecionados.forEach((e) {
+      _total = _total + e.preco;
+    });
+
+    return _total;
   }
 }
