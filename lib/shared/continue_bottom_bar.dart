@@ -21,7 +21,8 @@ class ContinueBottomBar extends StatelessWidget {
       fontWeight: FontWeight.bold,
     );
 
-    return Container(
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 100),
       width: double.infinity,
       height: active ? 60 : 0,
       child: Material(
