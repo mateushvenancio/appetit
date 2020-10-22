@@ -10,10 +10,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'selecionar_data_controller.dart';
 
 class SelecionarDataPage extends StatefulWidget {
-  final String title;
-  const SelecionarDataPage({Key key, this.title = "SelecionarData"})
-      : super(key: key);
-
   @override
   _SelecionarDataPageState createState() => _SelecionarDataPageState();
 }
@@ -48,25 +44,29 @@ class _SelecionarDataPageState
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: MainRadioTile(
-                onChanged: controller.changeRadius,
-                value: 0,
-                currentValue: controller.currentRadio,
-                label: 'Sim',
-              ),
-            ),
+            Observer(builder: (_) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: MainRadioTile(
+                  onChanged: controller.changeRadius,
+                  value: 0,
+                  currentValue: controller.currentRadio,
+                  label: 'Sim',
+                ),
+              );
+            }),
             SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: MainRadioTile(
-                onChanged: controller.changeRadius,
-                value: 1,
-                currentValue: controller.currentRadio,
-                label: 'Não',
-              ),
-            ),
+            Observer(builder: (_) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: MainRadioTile(
+                  onChanged: controller.changeRadius,
+                  value: 1,
+                  currentValue: controller.currentRadio,
+                  label: 'Não',
+                ),
+              );
+            }),
             Padding(
               padding: const EdgeInsets.all(15),
               child: Text(
@@ -77,21 +77,30 @@ class _SelecionarDataPageState
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: MainCalendario(),
-            ),
+            Observer(builder: (_) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: MainCalendario(
+                  // label: controller.isDateSelected
+                  //     ? controller.formatDate(controller.currentDate)
+                  //     : 'Selecione uma data',
+                  date: controller.currentDate,
+                  onSelected: controller.changeDate,
+                ),
+              );
+            }),
             SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Observer(builder: (_) {
                 return MainButton(
                   'Finalizar Pedido',
-                  onPressed: controller.isRadioSelected
-                      ? () {
-                          Modular.to.pushNamed('/pedido_finalizado');
-                        }
-                      : null,
+                  onPressed:
+                      controller.isRadioSelected && controller.isDateSelected
+                          ? () {
+                              Modular.to.pushNamed('/pedido_finalizado');
+                            }
+                          : null,
                 );
               }),
             ),

@@ -26,6 +26,13 @@ mixin _$SelecionarDataController on _SelecionarDataControllerBase, Store {
       (_$isRadioSelectedComputed ??= Computed<bool>(() => super.isRadioSelected,
               name: '_SelecionarDataControllerBase.isRadioSelected'))
           .value;
+  Computed<bool> _$isDateSelectedComputed;
+
+  @override
+  bool get isDateSelected =>
+      (_$isDateSelectedComputed ??= Computed<bool>(() => super.isDateSelected,
+              name: '_SelecionarDataControllerBase.isDateSelected'))
+          .value;
 
   final _$currentRadioAtom =
       Atom(name: '_SelecionarDataControllerBase.currentRadio');
@@ -40,6 +47,22 @@ mixin _$SelecionarDataController on _SelecionarDataControllerBase, Store {
   set currentRadio(int value) {
     _$currentRadioAtom.reportWrite(value, super.currentRadio, () {
       super.currentRadio = value;
+    });
+  }
+
+  final _$currentDateAtom =
+      Atom(name: '_SelecionarDataControllerBase.currentDate');
+
+  @override
+  DateTime get currentDate {
+    _$currentDateAtom.reportRead();
+    return super.currentDate;
+  }
+
+  @override
+  set currentDate(DateTime value) {
+    _$currentDateAtom.reportWrite(value, super.currentDate, () {
+      super.currentDate = value;
     });
   }
 
@@ -58,10 +81,23 @@ mixin _$SelecionarDataController on _SelecionarDataControllerBase, Store {
   }
 
   @override
+  dynamic changeDate(DateTime value) {
+    final _$actionInfo = _$_SelecionarDataControllerBaseActionController
+        .startAction(name: '_SelecionarDataControllerBase.changeDate');
+    try {
+      return super.changeDate(value);
+    } finally {
+      _$_SelecionarDataControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 currentRadio: ${currentRadio},
-isRadioSelected: ${isRadioSelected}
+currentDate: ${currentDate},
+isRadioSelected: ${isRadioSelected},
+isDateSelected: ${isDateSelected}
     ''';
   }
 }

@@ -9,6 +9,7 @@ import 'package:appetit/models/dia_model.dart';
 import 'package:appetit/models/pedido_model.dart';
 import 'package:appetit/shared/main_app_bar.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'listagem_pedidos_controller.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +20,12 @@ class ListagemPedidosPage extends StatefulWidget {
 
 class _ListagemPedidosPageState
     extends ModularState<ListagemPedidosPage, ListagemPedidosController> {
+  @override
+  void initState() {
+    initializeDateFormatting('pt-BR');
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
