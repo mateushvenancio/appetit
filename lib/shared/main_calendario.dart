@@ -1,6 +1,7 @@
 import 'package:appetit/constants/constant_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainCalendario extends StatelessWidget {
@@ -12,13 +13,14 @@ class MainCalendario extends StatelessWidget {
         style: TextStyle(color: ConstantColors.lightDark),
         readOnly: true,
         onTap: () {
-          showDialog(
-            context: context,
-            barrierColor: Colors.white.withOpacity(0),
-            builder: (context) => AlertDialog(
-              content: _MainCalendar(),
-            ),
-          );
+          Modular.to.pushNamed('/pedido_finalizado');
+          // showDialog(
+          //   context: context,
+          //   barrierColor: Colors.white.withOpacity(0),
+          //   builder: (context) => AlertDialog(
+          //     content: _MainCalendar(),
+          //   ),
+          // );
         },
         decoration: InputDecoration(
           prefixIcon: Icon(Icons.calendar_today),
