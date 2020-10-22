@@ -70,7 +70,6 @@ class _MainCalendar extends StatefulWidget {
 }
 
 class __MainCalendarState extends State<_MainCalendar> {
-  // DateTime _selectedDate = DateTime.now();
   DateTime _selectedDate;
   static const _textStyle = TextStyle(color: Colors.black);
   DateTime _header = DateTime.now();
@@ -94,8 +93,59 @@ class __MainCalendarState extends State<_MainCalendar> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(dataFormatada(_selectedDate)),
+        Text(
+          dataFormatada(_selectedDate),
+          style: TextStyle(color: ConstantColors.lightDark),
+        ),
+        DropdownButton<int>(
+          style: TextStyle(
+            fontSize: 22,
+            color: ConstantColors.primaryColor,
+          ),
+          icon: Icon(
+            Icons.arrow_drop_down,
+            color: ConstantColors.primaryColor,
+          ),
+          underline: Container(),
+          value: _header.year,
+          items: [
+            DropdownMenuItem(
+              value: 2015,
+              child: Text('2015'),
+            ),
+            DropdownMenuItem(
+              value: 2016,
+              child: Text('2016'),
+            ),
+            DropdownMenuItem(
+              value: 2017,
+              child: Text('2017'),
+            ),
+            DropdownMenuItem(
+              value: 2018,
+              child: Text('2018'),
+            ),
+            DropdownMenuItem(
+              value: 2019,
+              child: Text('2019'),
+            ),
+            DropdownMenuItem(
+              value: 2020,
+              child: Text('2020'),
+            ),
+            DropdownMenuItem(
+              value: 2021,
+              child: Text('2021'),
+            ),
+          ],
+          onChanged: (value) {
+            setState(() {
+              _header = DateTime(value);
+            });
+          },
+        ),
         CalendarCarousel(
+          targetDateTime: _header,
           customGridViewPhysics: NeverScrollableScrollPhysics(),
           locale: 'pt-BR',
           height: 330,
