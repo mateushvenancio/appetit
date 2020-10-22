@@ -9,10 +9,11 @@ class SelecionarDataController = _SelecionarDataControllerBase
 
 abstract class _SelecionarDataControllerBase with Store {
   @observable
-  int value = 0;
+  int currentRadio = -1;
 
   @action
-  void increment() {
-    value++;
-  }
+  changeRadius(int value) => currentRadio = value;
+
+  @computed
+  bool get isRadioSelected => currentRadio != -1;
 }

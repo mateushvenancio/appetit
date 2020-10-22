@@ -13,14 +13,13 @@ class MainCalendario extends StatelessWidget {
         style: TextStyle(color: ConstantColors.lightDark),
         readOnly: true,
         onTap: () {
-          Modular.to.pushNamed('/pedido_finalizado');
-          // showDialog(
-          //   context: context,
-          //   barrierColor: Colors.white.withOpacity(0),
-          //   builder: (context) => AlertDialog(
-          //     content: _MainCalendar(),
-          //   ),
-          // );
+          showDialog(
+            context: context,
+            barrierColor: Colors.white.withOpacity(0),
+            builder: (context) => AlertDialog(
+              content: _MainCalendar(),
+            ),
+          );
         },
         decoration: InputDecoration(
           prefixIcon: Icon(Icons.calendar_today),
