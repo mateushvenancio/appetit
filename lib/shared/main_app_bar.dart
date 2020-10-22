@@ -1,5 +1,6 @@
 import 'package:appetit/constants/constant_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -28,7 +29,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
               height: kToolbarHeight,
               child: Row(
                 children: [
-                  Navigator.canPop(context)
+                  Modular.to.canPop()
                       ? IconButton(
                           alignment: Alignment.centerLeft,
                           padding: EdgeInsets.zero,

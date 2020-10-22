@@ -14,6 +14,7 @@ class AppWidget extends StatelessWidget {
         textTheme: GoogleFonts.openSansTextTheme(),
         primaryColor: ConstantColors.primaryColor,
         accentColor: Colors.red,
+        canvasColor: Color(0XFFFAFAFA),
         appBarTheme: AppBarTheme(
           elevation: 0,
           color: Colors.transparent,

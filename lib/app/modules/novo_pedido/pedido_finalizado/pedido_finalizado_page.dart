@@ -48,10 +48,7 @@ class _PedidoFinalizadoPageState
                   MainButton(
                     'Fazer um novo pedido',
                     onPressed: () {
-                      Modular.to.pushNamedAndRemoveUntil(
-                        '/novo_pedido',
-                        ModalRoute.withName('/listagem_pedidos'),
-                      );
+                      Modular.to.popUntil(ModalRoute.withName('/novo_pedido'));
                     },
                   ),
                   SizedBox(height: 15),
@@ -59,10 +56,8 @@ class _PedidoFinalizadoPageState
                     'Voltar para a página inicial',
                     color: Color(0XFFB8CC3B),
                     onPressed: () {
-                      Modular.to.pushNamedAndRemoveUntil(
-                        '/listagem_pedidos',
-                        ModalRoute.withName('/'),
-                      );
+                      Modular.to
+                          .popUntil(ModalRoute.withName('/listagem_pedidos'));
                     },
                   ),
                 ],
