@@ -1,4 +1,4 @@
-import 'package:appetit/app/modules/login/components/main_button.dart';
+import 'package:appetit/shared/main_button.dart';
 import 'package:appetit/shared/main_text_field.dart';
 import 'package:appetit/constants/constant_colors.dart';
 import 'package:appetit/constants/glow_behavior.dart';

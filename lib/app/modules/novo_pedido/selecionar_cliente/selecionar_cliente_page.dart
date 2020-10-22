@@ -84,7 +84,9 @@ class _SelecionarClientePageState
         return ContinueBottomBar(
           active: controller.quantidadeSelecionados > 0,
           label: '${controller.quantidadeSelecionados} clientes selecionados',
-          onTap: () {},
+          onTap: () {
+            Modular.to.pushNamed('/selecionar_data');
+          },
         );
       }),
       floatingActionButton: FloatingActionButton(

@@ -3,6 +3,7 @@ import 'package:appetit/app/modules/login/login_module.dart';
 import 'package:appetit/app/modules/novo_pedido/detalhes_do_pedido/detalhes_do_pedido_module.dart';
 import 'package:appetit/app/modules/novo_pedido/informar_itens_do_pedido/informar_itens_do_pedido_module.dart';
 import 'package:appetit/app/modules/novo_pedido/selecionar_cliente/selecionar_cliente_module.dart';
+import 'package:appetit/app/modules/novo_pedido/selecionar_data/selecionar_data_module.dart';
 import 'package:appetit/repositories/categoria_repository.dart';
 import 'package:appetit/repositories/cliente_repository.dart';
 import 'app_controller.dart';
@@ -25,6 +26,7 @@ class AppModule extends MainModule {
         ModularRouter('/novo_pedido', module: InformarItensDoPedidoModule()),
         ModularRouter('/itens_pedidos', module: DetalhesDoPedidoModule()),
         ModularRouter('/selecionar_cliente', module: SelecionarClienteModule()),
+        ModularRouter('/selecionar_data', module: SelecionarDataModule()),
       ];
 
   @override

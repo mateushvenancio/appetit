@@ -13,12 +13,7 @@ class MainButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(45),
-          border: Border.all(
-            color: onPressed != null ? Colors.black : Colors.transparent,
-            width: 1,
-          )),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(45)),
       width: double.infinity,
       height: 45,
       child: FlatButton(
