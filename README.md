@@ -1,16 +1,26 @@
-# appetit
+# Appetit
 
-A new Flutter project. Created by Slidy
+### Estrutura
+Foi usando o Flutter Modular para gerência de estado, injeção de dependência e organização. Cada módulo possui uma tela (..._widget.dart) e uma classe de controle associada (..._controller.dart).
 
-## Getting Started
+### Associação
+Os tópicos listados no desafio e seus módulos correspondentes:
 
-This project is a starting point for a Flutter application.
+Tópico | Módulo
+-------|--------
+Página de login | LoginModule()
+Página com lista de pedidos efetuados | ListagemPedidosModule()
+Página de novos pedidos | InformarItensDoPedidoModule()
+Página de detalhamento do pedido | DetalhesDoPedidoModule()
+Página de selecionar clientes | SelecionarClienteModule()
+Página de adicionar informações ao pedido | SelecionarDataModule()
+Feedback do pedido realizado | PedidoFinalizadoModule()
 
-A few resources to get you started if this is your first Flutter project:
+### Instalação e execução
+Execução padrão de aplicativo Flutter:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- Baixar projeto para a máquina (Abra alguma pasta de sua preferência no terminar e digite ``` git clone https://github.com/mateushvenancio/appetit ```)
+- Em seguida rode o projeto em algum dispositivo Android com ``` cd appetit ``` e em seguida ``` flutter run ```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Agradecimentos
+Agradeço à Maida por essa oportunidade e ao Taynan pelo suporte e atenção. 🤝
