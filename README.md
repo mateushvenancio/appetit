@@ -1,5 +1,8 @@
 # Appetit
 
+### Motivo
+Aplicativo desenvolvido para um teste de admissão em uma empresa. Bem completo e com várias funcionalidades, fique a vontade para explorá-lo!
+
 ### Estrutura
 Foi usando o Flutter Modular para gerência de estado, injeção de dependência e organização. Cada módulo possui uma tela (..._widget.dart) e uma classe de controle associada (..._controller.dart).
 
@@ -21,6 +24,3 @@ Execução padrão de aplicativo Flutter:
 
 - Baixar projeto para a máquina (Abra alguma pasta de sua preferência no terminar e digite ``` git clone https://github.com/mateushvenancio/appetit ```)
 - Em seguida rode o projeto em algum dispositivo Android com ``` cd appetit ``` e em seguida ``` flutter run ```
-
-### Agradecimentos
-Agradeço à Maida por essa oportunidade e ao Taynan pelo suporte e atenção. 🤝
